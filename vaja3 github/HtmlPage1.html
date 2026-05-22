@@ -1,0 +1,1387 @@
+﻿<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELTA – Arhitektura & Prostor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1A2E4A;
+            --gold: #C8A96E;
+            --gold-lt: #D9BC8A;
+            --cream: #F5F1EB;
+            --cream-d: #EAE4DA;
+            --text: #1A2E4A;
+            --muted: #6B7B8D;
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3rem;
+            height: 72px;
+            background: rgba(245,241,235,0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(26,46,74,0.08);
+            transition: box-shadow 0.3s;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+            .nav-logo svg {
+                height: 42px;
+                width: auto;
+            }
+
+        .logo-wordmark {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+            .logo-wordmark span:first-child {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 26px;
+                font-weight: 700;
+                color: var(--navy);
+                letter-spacing: 8px;
+            }
+
+            .logo-wordmark span:last-child {
+                font-size: 9px;
+                font-weight: 400;
+                letter-spacing: 4px;
+                color: var(--gold);
+                text-transform: uppercase;
+                margin-top: 2px;
+            }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+            nav ul a {
+                font-size: 13px;
+                font-weight: 400;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: var(--muted);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+                nav ul a:hover {
+                    color: var(--navy);
+                }
+
+        .nav-contact {
+            background: var(--navy);
+            color: var(--cream) !important;
+            padding: 10px 24px;
+            border-radius: 0 !important;
+            letter-spacing: 2px !important;
+        }
+
+            .nav-contact:hover {
+                background: var(--gold);
+                color: var(--navy) !important;
+            }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 72px;
+            position: relative;
+        }
+
+        .hero-left {
+            background: var(--navy);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 5rem 6rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero-left::before {
+                content: '';
+                position: absolute;
+                top: -80px;
+                right: -80px;
+                width: 300px;
+                height: 300px;
+                border: 60px solid rgba(200,169,110,0.08);
+                border-radius: 50%;
+            }
+
+            .hero-left::after {
+                content: '';
+                position: absolute;
+                bottom: 60px;
+                left: 40px;
+                width: 120px;
+                height: 1px;
+                background: var(--gold);
+                opacity: 0.4;
+            }
+
+        .hero-eyebrow {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+            .hero-eyebrow::before {
+                content: '';
+                display: block;
+                width: 40px;
+                height: 1px;
+                background: var(--gold);
+            }
+
+        .hero-h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(48px, 5vw, 72px);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+        }
+
+            .hero-h1 em {
+                font-style: italic;
+                color: var(--gold);
+            }
+
+        .hero-desc {
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(245,241,235,0.6);
+            max-width: 380px;
+            margin-bottom: 3rem;
+        }
+
+        .btn-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 16px 36px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+
+            .btn-hero:hover {
+                background: var(--gold-lt);
+                letter-spacing: 4px;
+            }
+
+            .btn-hero svg {
+                transition: transform 0.25s;
+            }
+
+            .btn-hero:hover svg {
+                transform: translateX(4px);
+            }
+
+        .hero-right {
+            position: relative;
+            overflow: hidden;
+            background: var(--cream-d);
+        }
+
+        .hero-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(160deg, #ddd6ca 0%, #c8c0b0 100%);
+            gap: 16px;
+            color: var(--muted);
+            min-height: 600px;
+        }
+
+            .hero-photo-placeholder .ph-label {
+                font-size: 12px;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                opacity: 0.6;
+            }
+
+            .hero-photo-placeholder .ph-spec {
+                font-size: 11px;
+                opacity: 0.4;
+            }
+
+        /* Floating badge */
+        .hero-badge {
+            position: absolute;
+            bottom: 40px;
+            left: -1px;
+            background: var(--navy);
+            padding: 20px 28px;
+            border-left: 3px solid var(--gold);
+        }
+
+            .hero-badge p {
+                font-size: 11px;
+                letter-spacing: 2px;
+                color: var(--gold);
+                text-transform: uppercase;
+            }
+
+            .hero-badge strong {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 36px;
+                font-weight: 300;
+                color: var(--cream);
+                display: block;
+                line-height: 1;
+            }
+
+        /* ─── ZLATA PASICA ─── */
+        .gold-bar {
+            background: var(--gold);
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+
+        .gold-stat {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border-right: 1px solid rgba(26,46,74,0.15);
+        }
+
+            .gold-stat:last-child {
+                border-right: none;
+            }
+
+            .gold-stat .num {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 44px;
+                font-weight: 300;
+                color: var(--navy);
+                line-height: 1;
+            }
+
+            .gold-stat .lbl {
+                font-size: 11px;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: rgba(26,46,74,0.6);
+                margin-top: 6px;
+            }
+
+        /* ─── STORITVE ─── */
+        .services {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 4rem;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .section-tag {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+            .section-tag::before {
+                content: '';
+                display: block;
+                width: 30px;
+                height: 1px;
+                background: var(--gold);
+            }
+
+        .section-h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(36px, 4vw, 52px);
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--navy);
+        }
+
+            .section-h2 em {
+                font-style: italic;
+            }
+
+        .services-intro {
+            position: sticky;
+            top: 100px;
+        }
+
+            .services-intro p {
+                font-size: 15px;
+                font-weight: 300;
+                color: var(--muted);
+                line-height: 1.8;
+                margin-top: 1.5rem;
+                max-width: 320px;
+            }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5px;
+            background: rgba(26,46,74,0.1);
+        }
+
+        .service-card {
+            background: var(--cream);
+            padding: 2.5rem;
+            transition: background 0.25s;
+            cursor: default;
+        }
+
+            .service-card:hover {
+                background: var(--navy);
+            }
+
+                .service-card:hover .sc-title {
+                    color: var(--cream);
+                }
+
+                .service-card:hover .sc-desc {
+                    color: rgba(245,241,235,0.5);
+                }
+
+                .service-card:hover .sc-num {
+                    color: var(--gold);
+                }
+
+                .service-card:hover .sc-icon {
+                    border-color: rgba(200,169,110,0.3);
+                }
+
+                    .service-card:hover .sc-icon svg {
+                        stroke: var(--gold);
+                    }
+
+        .sc-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .sc-icon {
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(26,46,74,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.25s;
+        }
+
+        .sc-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            transition: color 0.25s;
+        }
+
+        .sc-desc {
+            font-size: 13px;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.7;
+            transition: color 0.25s;
+        }
+
+        /* ─── GALERIJA ─── */
+        .gallery-section {
+            background: var(--navy);
+            padding: 8rem 4rem;
+        }
+
+        .gallery-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+            .gallery-header .section-tag::before {
+                background: rgba(200,169,110,0.6);
+            }
+
+            .gallery-header .section-h2 {
+                color: var(--cream);
+            }
+
+        .gallery-cta-link {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid rgba(200,169,110,0.3);
+            padding-bottom: 4px;
+            transition: gap 0.2s;
+        }
+
+            .gallery-cta-link:hover {
+                gap: 14px;
+            }
+
+        .gallery-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 3fr 2fr 2fr;
+            grid-template-rows: 340px 220px;
+            gap: 4px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background: #16253a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+            .gallery-item::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: rgba(26,46,74,0);
+                transition: background 0.3s;
+            }
+
+            .gallery-item:hover::after {
+                background: rgba(26,46,74,0.25);
+            }
+
+            .gallery-item:first-child {
+                grid-row: 1 / 3;
+            }
+
+        .gallery-ph {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: rgba(200,169,110,0.35);
+            z-index: 1;
+        }
+
+            .gallery-ph p {
+                font-size: 11px;
+                letter-spacing: 1px;
+            }
+
+        .gallery-tag {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            z-index: 2;
+            background: rgba(200,169,110,0.15);
+            border: 1px solid rgba(200,169,110,0.3);
+            border-left: 2px solid var(--gold);
+            padding: 5px 12px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        /* ─── O NAS / FILOZOFIJA ─── */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 4rem;
+            gap: 8rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--cream-d);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--muted);
+        }
+
+            .about-photo p {
+                font-size: 11px;
+                letter-spacing: 2px;
+                opacity: 0.5;
+                text-transform: uppercase;
+            }
+
+        .about-accent {
+            position: absolute;
+            bottom: -24px;
+            right: -24px;
+            width: 160px;
+            height: 160px;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+            .about-accent strong {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 40px;
+                font-weight: 300;
+                color: var(--navy);
+                line-height: 1;
+            }
+
+            .about-accent span {
+                font-size: 10px;
+                letter-spacing: 2px;
+                color: var(--navy);
+                opacity: 0.7;
+                text-transform: uppercase;
+            }
+
+        .about-text .section-h2 {
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            font-size: 15px;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-quote {
+            border-left: 2px solid var(--gold);
+            padding: 1rem 0 1rem 1.5rem;
+            margin: 2rem 0;
+        }
+
+            .about-quote p {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 22px;
+                font-weight: 300;
+                font-style: italic;
+                color: var(--navy);
+                line-height: 1.5;
+                margin: 0;
+            }
+
+        /* ─── KONTAKT / CTA ─── */
+        .cta-section {
+            background: var(--navy);
+            padding: 8rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-section::before {
+                content: 'VELTA';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 260px;
+                font-weight: 700;
+                letter-spacing: 20px;
+                color: rgba(200,169,110,0.04);
+                white-space: nowrap;
+                pointer-events: none;
+            }
+
+            .cta-section .section-tag {
+                justify-content: center;
+            }
+
+                .cta-section .section-tag::before {
+                    display: none;
+                }
+
+        .cta-h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--cream);
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+            .cta-h2 em {
+                font-style: italic;
+                color: var(--gold);
+            }
+
+        .cta-desc {
+            font-size: 15px;
+            font-weight: 300;
+            color: rgba(245,241,235,0.5);
+            max-width: 440px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-btns {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .btn-cta-primary {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 18px 48px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.25s;
+            display: inline-block;
+        }
+
+            .btn-cta-primary:hover {
+                background: var(--gold-lt);
+                letter-spacing: 4px;
+            }
+
+        .btn-cta-secondary {
+            color: rgba(245,241,235,0.5);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(245,241,235,0.2);
+            padding-bottom: 2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+            .btn-cta-secondary:hover {
+                color: var(--gold);
+                border-color: rgba(200,169,110,0.4);
+            }
+
+        /* ─── KONTAKTNI PODATKI ─── */
+        .contact-info {
+            background: var(--cream-d);
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            border-top: 1px solid rgba(26,46,74,0.1);
+        }
+
+        .contact-item {
+            padding: 3rem 4rem;
+            border-right: 1px solid rgba(26,46,74,0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+            .contact-item:last-child {
+                border-right: none;
+            }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+
+        .contact-label {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .contact-value {
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--navy);
+            line-height: 1.5;
+        }
+
+            .contact-value a {
+                color: var(--navy);
+                text-decoration: none;
+            }
+
+                .contact-value a:hover {
+                    color: var(--gold);
+                }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--navy);
+            padding: 4rem;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .footer-logo-svg {
+            height: 38px;
+        }
+
+        .footer-wordmark span:first-child {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 7px;
+            color: var(--cream);
+            display: block;
+            line-height: 1;
+        }
+
+        .footer-wordmark span:last-child {
+            font-size: 8px;
+            letter-spacing: 3px;
+            color: rgba(200,169,110,0.7);
+            text-transform: uppercase;
+            display: block;
+            margin-top: 3px;
+        }
+
+        .footer-brand p {
+            font-size: 13px;
+            font-weight: 300;
+            color: rgba(245,241,235,0.4);
+            line-height: 1.8;
+            max-width: 280px;
+        }
+
+        .footer-col h4 {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+            .footer-col ul li {
+                margin-bottom: 10px;
+            }
+
+                .footer-col ul li a {
+                    font-size: 13px;
+                    font-weight: 300;
+                    color: rgba(245,241,235,0.4);
+                    text-decoration: none;
+                    transition: color 0.2s;
+                }
+
+                    .footer-col ul li a:hover {
+                        color: var(--cream);
+                    }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(245,241,235,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .footer-bottom p {
+                font-size: 12px;
+                color: rgba(245,241,235,0.25);
+            }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+            .footer-bottom-links a {
+                font-size: 12px;
+                color: rgba(245,241,235,0.25);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+                .footer-bottom-links a:hover {
+                    color: var(--gold);
+                }
+
+        /* ─── ODZIVNOST ─── */
+        @media (max-width: 900px) {
+            nav ul {
+                display: none;
+            }
+
+            nav {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                padding: 3rem 1.5rem 3rem;
+            }
+
+            .hero-right {
+                min-height: 320px;
+            }
+
+            .hero-badge {
+                display: none;
+            }
+
+            .gold-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .gold-stat {
+                border-right: none;
+                border-bottom: 1px solid rgba(26,46,74,0.15);
+            }
+
+                .gold-stat:last-child {
+                    border-bottom: none;
+                }
+
+            .services {
+                grid-template-columns: 1fr;
+                padding: 4rem 1.5rem;
+                gap: 3rem;
+            }
+
+            .services-intro {
+                position: static;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .gallery-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 220px 160px 160px;
+            }
+
+            .gallery-item:first-child {
+                grid-row: 1;
+                grid-column: 1 / 3;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                padding: 4rem 1.5rem;
+                gap: 4rem;
+            }
+
+            .about-accent {
+                display: none;
+            }
+
+            .cta-section {
+                padding: 5rem 1.5rem;
+            }
+
+            .cta-btns {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(26,46,74,0.1);
+                padding: 2rem 1.5rem;
+            }
+
+            footer {
+                padding: 3rem 1.5rem;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-brand {
+                grid-column: 1 / 3;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .footer-bottom-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══════════════ NAV ══════════════ -->
+    <nav>
+        <a href="#" class="nav-logo">
+            <!-- Inline logotip SVG (pomanjšan) -->
+            <svg height="42" viewBox="0 0 260 208" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="130,0 260,148 0,148" fill="#1A2E4A" />
+                <polygon points="130,38 232,148 28,148" fill="#C8A96E" />
+                <rect x="83" y="130" width="94" height="74" fill="#1A2E4A" />
+                <rect x="0" y="153" width="260" height="4" fill="#C8A96E" />
+            </svg>
+            <div class="logo-wordmark">
+                <span>VELTA</span>
+                <span>Arhitektura &amp; Prostor</span>
+            </div>
+        </a>
+        <ul>
+            <li><a href="#storitve">Storitve</a></li>
+            <li><a href="#galerija">Projekti</a></li>
+            <li><a href="#o-nas">O nas</a></li>
+            <li><a href="#kontakt" class="nav-contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <!-- ══════════════ HERO ══════════════ -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-eyebrow">Arhitekturni studio</div>
+            <h1 class="hero-h1">
+                Gradimo<br>
+                vaše <em>sanje.</em>
+            </h1>
+            <p class="hero-desc">
+                Ustvarjamo prostorske rešitve, ki presegajo pričakovanja.
+                Od zasnove do ključa — z vami na vsakem koraku.
+            </p>
+            <a href="#storitve" class="btn-hero">
+                Odkrijte naše storitve
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="hero-right">
+            <img src="osa.jpeg" width="1000" height="1100">
+            <div class="hero-badge">
+                <p>Projektov izvedenih</p>
+                <strong>140+</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ ZLATA STATISTIČNA PASICA ══════════════ -->
+    <div class="gold-bar">
+        <div class="gold-stat">
+            <div class="num">8</div>
+            <div class="lbl">Let izkušenj</div>
+        </div>
+        <div class="gold-stat">
+            <div class="num">140+</div>
+            <div class="lbl">Izvedenih projektov</div>
+        </div>
+        <div class="gold-stat">
+            <div class="num">100%</div>
+            <div class="lbl">Zadovoljnih naročnikov</div>
+        </div>
+    </div>
+
+    <!-- ══════════════ STORITVE ══════════════ -->
+    <section class="services" id="storitve">
+        <div class="services-intro">
+            <div class="section-tag">Naše storitve</div>
+            <h2 class="section-h2">Celostna<br><em>arhitekturna</em><br>podpora</h2>
+            <p>Pokrivamo vse faze vašega projekta — od idejne zasnove do nadzora gradnje in notranje opreme.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="sc-num">01</div>
+                <div class="sc-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A2E4A" stroke-width="1.5">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                </div>
+                <h3 class="sc-title">Projektiranje objektov</h3>
+                <p class="sc-desc">Zasnova stanovanjskih, poslovnih in javnih objektov. Idejne, PGD in PZI dokumentacije po meri.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="sc-num">02</div>
+                <div class="sc-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A2E4A" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <line x1="3" y1="9" x2="21" y2="9" />
+                        <line x1="3" y1="15" x2="21" y2="15" />
+                        <line x1="9" y1="3" x2="9" y2="21" />
+                    </svg>
+                </div>
+                <h3 class="sc-title">Notranja oprema</h3>
+                <p class="sc-desc">Celostno oblikovanje interierjev — od koncepta do izvedbe. Funkcionalno in estetsko v harmoniji.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="sc-num">03</div>
+                <div class="sc-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A2E4A" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                </div>
+                <h3 class="sc-title">Nadzor gradnje</h3>
+                <p class="sc-desc">Strokovni nadzor na gradbišču skrbi, da se vaša vizija uresniči točno tako, kot je bila zasnovana.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="sc-num">04</div>
+                <div class="sc-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A2E4A" stroke-width="1.5">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                </div>
+                <h3 class="sc-title">Prenove in adaptacije</h3>
+                <p class="sc-desc">Vdihamo novo življenje obstoječim prostorem. Prenove s spoštovanjem do obstoječe arhitekturne dediščine.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ GALERIJA PROJEKTOV ══════════════ -->
+    <section class="gallery-section" id="galerija">
+        <div class="gallery-header">
+            <div>
+                <div class="section-tag">Galerija projektov</div>
+                <h2 class="section-h2" style="color: var(--cream);">Naši <em>izvedeni</em><br>projekti</h2>
+            </div>
+            <a href="#" class="gallery-cta-link">
+                Vsi projekti →
+            </a>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- Fotografija 1 – glavna, pokriva 2 vrstici (800×1000 px, WebP) -->
+            <div class="gallery-item">
+                <div class="gallery-ph">
+                    <img src="grad.jpeg" width="600" height="700">
+                </div>
+                <div class="gallery-tag">JPEG · 278 KB</div>
+            </div>
+
+            <!-- Fotografija 2 -->
+            <div class="gallery-item">
+                <div class="gallery-ph">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="1" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21,15 16,10 5,21" />
+                    </svg>
+                    <p>Foto 2 · 800×600 px</p>
+                </div>
+                <div class="gallery-tag">WebP · 95 KB</div>
+            </div>
+
+            <!-- Fotografija 3 -->
+            <div class="gallery-item">
+                <div class="gallery-ph">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="1" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21,15 16,10 5,21" />
+                    </svg>
+                    <p>Foto 3 · 800×600 px</p>
+                </div>
+                <div class="gallery-tag">JPEG · 210 KB</div>
+            </div>
+
+            <!-- Fotografija 4 -->
+            <div class="gallery-item">
+                <div class="gallery-ph">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="1" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21,15 16,10 5,21" />
+                    </svg>
+                    <p>Foto 4 · detail</p>
+                </div>
+                <div class="gallery-tag">WebP · 80 KB</div>
+            </div>
+
+            <!-- Fotografija 5 -->
+            <div class="gallery-item">
+                <div class="gallery-ph">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <rect x="3" y="3" width="18" height="18" rx="1" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21,15 16,10 5,21" />
+                    </svg>
+                    <p>Foto 5 · ambient</p>
+                </div>
+                <div class="gallery-tag">WebP · 115 KB</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ O NAS ══════════════ -->
+    <section class="about" id="o-nas">
+        <div class="about-image">
+            <img src="vojaki.jpeg "width="600" height="450">
+            <div class="about-accent">
+                <strong>8+</strong>
+                <span>let</span>
+            </div>
+        </div>
+
+        <div class="about-text">
+            <div class="section-tag">O studiu</div>
+            <h2 class="section-h2">Arhitektura<br>z <em>dušo</em></h2>
+
+            <div class="about-quote">
+                <p>»Prostor ni le fizična meja — je izkušnja, ki oblikuje vsakdan.«</p>
+            </div>
+
+            <p>VELTA arhitekturni studio deluje od leta 2016 in se ponaša z bogatimi izkušnjami na področju stanovanjske, poslovne in javne arhitekture.</p>
+            <p>Naša ekipa izkušenih arhitektov in oblikovalcev pristopa k vsakemu projektu z enako mero strasti in natančnosti — ne glede na obseg ali zahtevnost naloge.</p>
+
+            <a href="#kontakt" class="btn-hero" style="margin-top:1rem; display:inline-flex">
+                Spoznajte ekipo
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- ══════════════ CTA ══════════════ -->
+    <section class="cta-section" id="kontakt">
+        <div class="section-tag">Začnimo skupaj</div>
+        <h2 class="cta-h2">Imate projekt?<br><em>Pogovorimo se.</em></h2>
+        <p class="cta-desc">Vsaka velika zgradba se začne z eno samo idejo. Povejte nam o vaši in skupaj jo bomo uresničili.</p>
+        <div class="cta-btns">
+            <a href="mailto:info@velta-arh.si" class="btn-cta-primary">Pošljite povpraševanje</a>
+            <a href="tel:+38641457821" class="btn-cta-secondary">ali pokličite: +386 041 457 821</a>
+        </div>
+    </section>
+
+    <!-- ══════════════ KONTAKTNI PODATKI ══════════════ -->
+    <div class="contact-info">
+        <div class="contact-item">
+            <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="1.5">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.26h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z" />
+                </svg>
+            </div>
+            <div>
+                <p class="contact-label">Telefon</p>
+                <p class="contact-value"><a href="tel:+38641457821">+386 041 457 821</a></p>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="1.5">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+            </div>
+            <div>
+                <p class="contact-label">E-pošta</p>
+                <p class="contact-value"><a href="mailto:info@velta-arh.si">info@velta-arh.si</a></p>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="1.5">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
+            </div>
+            <div>
+                <p class="contact-label">Spletna stran</p>
+                <p class="contact-value"><a href="http://www.velta-arh.si">www.velta-arh.si</a></p>
+                <p class="contact-value" style="font-size:13px; margin-top:4px; opacity:0.6">Ljubljana, Slovenija</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo-wrap">
+                    <svg class="footer-logo-svg" viewBox="0 0 260 208" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="130,0 260,148 0,148" fill="#F5F1EB" />
+                        <polygon points="130,38 232,148 28,148" fill="#C8A96E" />
+                        <rect x="83" y="130" width="94" height="74" fill="#F5F1EB" />
+                        <rect x="0" y="153" width="260" height="4" fill="#C8A96E" />
+                    </svg>
+                    <div class="footer-wordmark">
+                        <span>VELTA</span>
+                        <span>Arhitektura &amp; Prostor</span>
+                    </div>
+                </div>
+                <p>Ustvarjamo prostore, ki navdihujejo. VELTA arhitekturni studio — vaš partner od ideje do ključa.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navigacija</h4>
+                <ul>
+                    <li><a href="#">Domov</a></li>
+                    <li><a href="#storitve">Storitve</a></li>
+                    <li><a href="#galerija">Projekti</a></li>
+                    <li><a href="#o-nas">O studiu</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="tel:+38641457821">+386 041 457 821</a></li>
+                    <li><a href="mailto:info@velta-arh.si">info@velta-arh.si</a></li>
+                    <li><a href="#">www.velta-arh.si</a></li>
+                    <li><a href="#">Ljubljana, Slovenija</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 VELTA d.o.o. | Arhitektura &amp; Prostor | Ljubljana, Slovenija</p>
+            <div class="footer-bottom-links">
+                <a href="#">Politika zasebnosti</a>
+                <a href="#">Pogoji uporabe</a>
+                <a href="#">Piškotki</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
